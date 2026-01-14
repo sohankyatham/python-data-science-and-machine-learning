@@ -7,3 +7,4 @@ This repository contains exercises, notes, and small projects from my learning j
 This repository is actively updated as I continue my coursework and expand my understanding of data science and machine learning.
 
 ## Tools & Libraries:
+Learn Jupyter Notebooks, Numpy, Pandas, and Sci-kit Learn 
