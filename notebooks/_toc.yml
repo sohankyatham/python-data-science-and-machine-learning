@@ -1,0 +1,16 @@
+format: jb-book
+root: intro
+chapters:
+- file: 00_python_essentials
+- file: 01_advanced_python
+- file: 02_python_standard_libraries
+- file: 03_python_OOP
+- file: 04_numpy
+- file: 04-numpy_lecture
+- file: 05_pandas
+- file: 05_pandas_lecture1
+- file: 05_pandas_lecture2
+- file: 06_matplotlib
+- file: 06_matplotlib_lecture_data_visualization
+- file: 07_linear_algebra
+- file: 08_statistics_and_probability

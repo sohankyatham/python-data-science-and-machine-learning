@@ -1,0 +1,1987 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Jupyter Notebook Basics &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '00_python_essentials';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advanced Python Concepts" href="01_advanced_python.html" />
+    <link rel="prev" title="Python Data Science &amp; ML" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Jupyter Book</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Python Data Science & ML
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter Notebook Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_advanced_python.html">Advanced Python Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_python_standard_libraries.html">Review of some core <em><strong>standard library</strong></em> modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_python_OOP.html">Python Object Oriented Programming (OOP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_numpy.html">NumPy - Numerical Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-numpy_lecture.html">Week 3: Numpy and linear algebra</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="05_pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_pandas_lecture1.html">Introduction to pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="05_pandas_lecture2.html">Data Manipulation with Pandas</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="06_matplotlib.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_matplotlib_lecture_data_visualization.html">Visualization with Matplotlib</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="07_linear_algebra.html">Linear Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_statistics_and_probability.html">Probability &amp; Statistics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/00_python_essentials.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jupyter Notebook Basics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-examples">Markdown Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-python-review-for-some-topics">Quick Python Review for some topics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#false-values">False values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-collections-arrays">Python Collections (Arrays)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-mutable-ordered-allow-duplicates-allow-multiple-types">List - mutable, ordered, allow duplicates, &amp; allow multiple types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple-immutable-ordered-allow-duplicates-can-contain-elements-of-multiple-data-types">Tuple - immutable, ordered, allow duplicates, &amp; can contain elements of multiple data types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-unordered-unchangeable-and-do-not-allow-duplicate-values">Sets - unordered, unchangeable, and do not allow duplicate values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-ordered-changeable-and-do-not-allow-duplicates">Dictionaries - ordered*, changeable and do NOT allow duplicates</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#control-flow">Control Flow</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-legb-rule">Scope &amp; LEGB Rule</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-types">Error Types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling-raiserror">Exception Handling - raiserror</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map">map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter">filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zip">zip</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-notebook-basics">
+<h1>Jupyter Notebook Basics<a class="headerlink" href="#jupyter-notebook-basics" title="Link to this heading">#</a></h1>
+<p><strong>Goal:</strong><br />
+Learn how Jupyter notebooks work, how to run cells, write Markdown, and execute basic Python code.</p>
+<p><strong>Topics Covered:</strong></p>
+<ul class="simple">
+<li><p>Code cells vs Markdown cells</p></li>
+<li><p>Running cells</p></li>
+<li><p>Execution order</p></li>
+</ul>
+<p>// Code to start jupyter notebook and view on browser:
+<code class="docutils literal notranslate"><span class="pre">jupter</span> <span class="pre">notebook</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World, this is a jupyter notebook&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World, this is a jupyter notebook
+</pre></div>
+</div>
+</div>
+</div>
+<section id="key-takeaways">
+<h2>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Jupyter notebooks run cells independently</p></li>
+<li><p>Order matters</p></li>
+<li><p>Markdown is essential for clarity</p></li>
+<li><p>Notebooks are ideal for exploration and learning</p></li>
+</ul>
+</section>
+<section id="markdown-examples">
+<h2>Markdown Examples<a class="headerlink" href="#markdown-examples" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>This is a bullet point</p></li>
+<li><p><strong>Bold text</strong></p></li>
+<li><p><em>Italic text</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inline</span> <span class="pre">code</span></code></p></li>
+</ul>
+<p>Inline Math: (x^2 + y^2 = z^2)</p>
+<p>Math with LaTeX:
+$<span class="math notranslate nohighlight">\( 
+\int_0^1 x^2 \, dx = \frac{1}{3}
+\)</span>$</p>
+</section>
+<section id="quick-python-review-for-some-topics">
+<h2>Quick Python Review for some topics<a class="headerlink" href="#quick-python-review-for-some-topics" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Concatenate Text &amp; Numbers</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s2">&quot;years old.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; years old.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Formatting String Literals is recommended over concatenation for readability and performance </span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I am </span><span class="si">{</span><span class="mi">18</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Jake Peralta&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Casting - str(), int(), float(), bool(), etc</span>
+
+<span class="c1"># VARIABLES - Python variables don’t store values, they reference objects.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">11456</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># % Modulus (Remainder)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># ** Exponentiation</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Normal Division</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Floor Division</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># f-string</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Jake Peralta&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I am 18 years old.
+I am 18 years old.
+I am 18 years old.
+My name is Jake Peralta
+11456
+&lt;class &#39;int&#39;&gt;
+11456
+1
+8
+3.3333333333333335
+3
+My name is Jake Peralta
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOGICAL OPERATORS - and, or, not</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Chained comparsion - short and more readable than what&#39;s done on line 3 &amp; 6</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># chained expression instead of using logical operator and/or</span>
+
+<span class="c1"># `is` &amp; `is not` are identity operators</span>
+<span class="c1"># `is` vs `==`</span>
+    <span class="c1"># is operator checks if both variables point to the same object in memory</span>
+    <span class="c1"># == operator checks for equality of value</span>
+
+<span class="c1"># Membership operators: `in` &amp; `not in`</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+True
+False
+True
+</pre></div>
+</div>
+</div>
+</div>
+<section id="false-values">
+<h3>False values<a class="headerlink" href="#false-values" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>False,
+0,
+0.0,
+“”,
+[],
+{},
+set(),
+None</p></li>
+</ul>
+<p>Everything else -&gt; <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># BITWISE OPERATORS - manipulates bits: </span>
+<span class="c1"># &amp; - and</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>      <span class="c1"># 0101</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>      <span class="c1"># 0011</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># 0001 → 1</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">6</span>      <span class="c1"># 110 in binary</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>      <span class="c1"># 011 in binary</span>
+<span class="n">x</span> <span class="o">&amp;=</span> <span class="n">y</span>     <span class="c1"># 110 &amp; 011 = 010</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># 2</span>
+
+
+<span class="c1"># | - or</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>      <span class="c1"># 0101</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>      <span class="c1"># 0011</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># 0111 → 7</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>      <span class="c1"># 100</span>
+<span class="n">x</span> <span class="o">|=</span> <span class="mi">1</span>     <span class="c1"># 001</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># 101 → 5</span>
+
+
+<span class="c1"># ^ - XOR</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>      <span class="c1"># 0101</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>      <span class="c1"># 0011</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># 0110 → 6</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>      <span class="c1"># 101</span>
+<span class="n">x</span> <span class="o">^=</span> <span class="mi">3</span>     <span class="c1"># 011</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># 110 → 6</span>
+
+
+<span class="c1"># &gt;&gt; (right shift assignment) &amp; &lt;&lt; (left shift assignment)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>      <span class="c1"># 1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 0100 → 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 0010 → 2</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">8</span>      <span class="c1"># 1000</span>
+<span class="n">x</span> <span class="o">&gt;&gt;=</span> <span class="mi">2</span>    <span class="c1"># 0010</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># 2</span>
+
+<span class="c1"># x &gt;&gt; 1 basically means x // 2</span>
+<span class="c1"># x &gt;&gt; 2 basically means x // 4</span>
+
+<span class="c1"># := - the walrus operator (assignment expression - assigns a value AND returns it)</span>
+    <span class="c1"># normally you do this:</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># with walrus operator:</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+7
+5
+6
+6
+4
+2
+2
+4
+4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-types">
+<h3>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Text type - str (strings are immutable)</p></li>
+<li><p>Numeric types - int, float, complex</p></li>
+<li><p>Sequence types - list, tuple, range</p></li>
+<li><p>Mapping type - dict</p></li>
+<li><p>Set types - set, frozenset</p></li>
+<li><p>Boolean type - bool</p></li>
+<li><p>None type - NoneType (special type with a single value, None,  used to represent the absence of a value or a null value)</p></li>
+<li><p>Binary types - bytes (immutable sequence of bytes), bytearray (mutable sequence of bytes), memoryview (allows memory access to other binary objects without copying)</p></li>
+<li><p>4 built-in data types in Python used to store <strong>collections of data</strong>: List, Tuple, Set, Dictionary</p></li>
+<li><p>get the data type of any object by using the <strong>type()</strong> function</p></li>
+</ul>
+</section>
+<section id="python-collections-arrays">
+<h3>Python Collections (Arrays)<a class="headerlink" href="#python-collections-arrays" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>List:</strong> An ordered, mutable collection that allows duplicates, written with []</p></li>
+<li><p><strong>Tuple:</strong> An ordered, immutable collection that allows duplicates, written with ()</p></li>
+<li><p><strong>Set:</strong> An unordered, items are unchangeable, but you can remove and/or add items, written with {}. No duplicate members.</p></li>
+<li><p><strong>Dictionary:</strong> An ordered, mutable collection of key–value pairs with unique keys, written with {key: value}. No duplicate members.</p></li>
+<li><h6 class="rubric" id="mutable-can-change-in-place-list-dict-set">Mutable (can change in place) - list, dict, set</h6>
+</li>
+<li><h6 class="rubric" id="immutable-cannot-change-tuple-frozenset">Immutable (cannot change) - tuple, frozenset</h6>
+</li>
+<li><h6 class="rubric" id="tuple-immutable-ordered-hashable">Tuple - immutable, ordered, <strong>hashable</strong></h6>
+</li>
+<li><h6 class="rubric" id="set-types-unordered-no-duplicates-sets-are-mutable-frozenset-is-immutable">Set Types - unordered &amp; no duplicates; sets are mutable, frozenset is immutable</h6>
+</li>
+<li><h6 class="rubric" id="dict-keys-must-be-immutable-values-can-be-anything">Dict - keys must be immutable, values can be anything</h6>
+</li>
+</ul>
+<section id="list-mutable-ordered-allow-duplicates-allow-multiple-types">
+<h4>List - mutable, ordered, allow duplicates, &amp; allow multiple types<a class="headerlink" href="#list-mutable-ordered-allow-duplicates-allow-multiple-types" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Used for general purpose data collection</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">[&quot;Apple&quot;,</span> <span class="pre">&quot;Mango&quot;,</span> <span class="pre">&quot;Mango&quot;,</span> <span class="pre">1,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">9,</span> <span class="pre">True,</span> <span class="pre">False]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List - items are ordered, mutable, allow duplicate values, &amp; allow multiple types.</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">,</span> <span class="s2">&quot;watermelon&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;grape&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The length of this list is&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruits</span><span class="p">))</span>
+
+<span class="c1"># The list() Constructor</span>
+<span class="n">animals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="s2">&quot;tiger&quot;</span><span class="p">,</span> <span class="s2">&quot;monkey&quot;</span><span class="p">,</span> <span class="s2">&quot;lion&quot;</span><span class="p">))</span> <span class="c1"># note the double round-brackets</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">animals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;, &#39;mango&#39;, &#39;watermelon&#39;, &#39;orange&#39;, &#39;grape&#39;]
+The length of this list is 7
+[&#39;tiger&#39;, &#39;monkey&#39;, &#39;lion&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access elements by list[index]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Items ordered and are indexed [0] for first element, [1] for second element, etc</span>
+<span class="c1"># Last item is [-1]</span>
+
+<span class="c1"># Slicing - start:stop:step</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># goes up to BUT NOT INCLUDING</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Slice with step</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Negative indices for slicing</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mango&quot;</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Change list items</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;kiwi&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># List items have defined order and will not change</span>
+<span class="c1"># If you add new items to a list, the new items will be placed at the end of the list</span>
+<span class="c1"># Insert - inserts an item at the specified index</span>
+<span class="c1">#fruits.insert(1, &quot;cherry&quot;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+
+<span class="c1"># Append - add an item to the end of the list; you can add any iterable object (tuples, sets, dictionaries etc.)</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;apricot&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+
+<span class="c1"># Extend - append elements from another list </span>
+<span class="n">more_fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;papaya&quot;</span><span class="p">,</span> <span class="s2">&quot;pineapple&quot;</span><span class="p">,</span> <span class="s2">&quot;strawberry&quot;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">more_fruits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cherry
+[&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;, &#39;mango&#39;]
+[&#39;apple&#39;, &#39;cherry&#39;, &#39;watermelon&#39;]
+[&#39;cherry&#39;, &#39;mango&#39;, &#39;watermelon&#39;, &#39;orange&#39;]
+True 
+
+cherry
+kiwi
+[&#39;apple&#39;, &#39;banana&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;watermelon&#39;, &#39;orange&#39;, &#39;grape&#39;]
+[&#39;apple&#39;, &#39;banana&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;watermelon&#39;, &#39;orange&#39;, &#39;grape&#39;, &#39;apricot&#39;]
+[&#39;apple&#39;, &#39;banana&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;watermelon&#39;, &#39;orange&#39;, &#39;grape&#39;, &#39;apricot&#39;, &#39;papaya&#39;, &#39;pineapple&#39;, &#39;strawberry&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove() - removes specified item (removes first occurence if more than one)</span>
+<span class="n">fruits</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;apricot&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+
+<span class="c1"># pop() - removes by specific index and returns that value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1"># If index is not specified; it removes last element</span>
+
+<span class="c1"># del - removes by specific index but does not return a value; can delete whole list as well</span>
+<span class="k">del</span> <span class="n">fruits</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+
+<span class="c1"># clear() - clears whole list and makes it empty</span>
+<span class="c1"># fruits.clear()</span>
+
+<span class="c1"># SUMMARY:</span>
+<span class="c1"># remove() - removes by value</span>
+<span class="c1"># pop() - removes by index AND returns that value</span>
+<span class="c1"># del - removes by index BUT does not return a value</span>
+<span class="c1"># clear() - clears list but won&#39;t have any content (empty list)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apple&#39;, &#39;banana&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;watermelon&#39;, &#39;orange&#39;, &#39;grape&#39;, &#39;papaya&#39;, &#39;pineapple&#39;, &#39;strawberry&#39;]
+mango
+[&#39;apple&#39;, &#39;banana&#39;, &#39;watermelon&#39;, &#39;orange&#39;, &#39;grape&#39;, &#39;papaya&#39;, &#39;pineapple&#39;, &#39;strawberry&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOOPING through a list</span>
+<span class="c1"># for fruit in fruits: # loop through the list items </span>
+<span class="c1">#     print(fruit)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span> <span class="c1"># range(start:stop:step)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fruits</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruits</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">[</span><span class="n">y</span><span class="p">])</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># List Comprehensions</span>
+<span class="c1"># Equivalent to loops - but cleaner and faster; dict &amp; set comprehensions exist as well </span>
+<span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">newlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fruits</span> <span class="k">if</span> <span class="s2">&quot;a&quot;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">newlist</span><span class="p">)</span>
+<span class="c1"># This is equal to:</span>
+<span class="c1"># for x in fruits:</span>
+<span class="c1">#    if &quot;a&quot; in x:</span>
+<span class="c1">#       newlist.append(x)</span>
+
+<span class="c1"># SYNTAX: newlist = [expression for item in iterable if condition == True]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+apple
+banana
+watermelon
+orange
+grape
+papaya
+pineapple
+strawberry
+apple
+banana
+watermelon
+orange
+grape
+papaya
+pineapple
+strawberry
+[&#39;apple&#39;, &#39;banana&#39;, &#39;watermelon&#39;, &#39;orange&#39;, &#39;grape&#39;, &#39;papaya&#39;, &#39;pineapple&#39;, &#39;strawberry&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SORTING A LIST</span>
+<span class="c1"># Sort the list numerically/alphabetically {capital sorted before lowercase, do .sort(key = str.lower) otherwise}</span>
+<span class="n">this_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">,</span> <span class="s2">&quot;kiwi&quot;</span><span class="p">,</span> <span class="s2">&quot;pineapple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">]</span>
+<span class="n">this_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">this_list</span><span class="p">)</span>
+
+<span class="c1"># sort the list descending </span>
+<span class="n">this_list</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">this_list</span><span class="p">)</span>
+
+<span class="c1"># Custom sort</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">thislist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">thislist</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">myfunc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thislist</span><span class="p">)</span>
+
+<span class="n">thislist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">thislist</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thislist</span><span class="p">)</span>
+
+
+<span class="c1"># COPY LISTS</span>
+<span class="c1"># list1 = [1,2,3]</span>
+<span class="c1"># list2 = list1 will make list2 a reference to list1 and changes made in list1 will automatically be made in list2</span>
+<span class="c1"># .copy() method</span>
+<span class="n">birds</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;falcon&quot;</span><span class="p">,</span> <span class="s2">&quot;parrot&quot;</span><span class="p">,</span> <span class="s2">&quot;eagle&quot;</span><span class="p">]</span>
+<span class="n">copy_of_birds</span> <span class="o">=</span> <span class="n">birds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">copy_of_birds</span><span class="p">)</span>
+
+<span class="c1"># .list() method</span>
+<span class="n">copy_of_birds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">birds</span><span class="p">)</span>
+
+<span class="c1"># Slicing method</span>
+<span class="n">copy_of_birds</span> <span class="o">=</span> <span class="n">birds</span><span class="p">[:]</span>
+
+
+<span class="c1"># JOIN LISTS</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="c1"># + operator</span>
+<span class="n">list3</span> <span class="o">=</span> <span class="n">list1</span> <span class="o">+</span> <span class="n">list2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list3</span><span class="p">)</span>
+
+<span class="c1"># .extend()</span>
+<span class="n">list1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+
+<span class="c1"># Append items one by one using a for loop</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">square_value</span> <span class="o">=</span> <span class="n">i</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">square_value</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;banana&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;pineapple&#39;]
+[&#39;pineapple&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;kiwi&#39;, &#39;banana&#39;]
+[50, 65, 23, 82, 100]
+[23, 82, 65, 50, 100]
+[&#39;falcon&#39;, &#39;parrot&#39;, &#39;eagle&#39;]
+[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, 1, 2, 3]
+[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, 1, 2, 3]
+hello world
+[0, 1, 4, 9, 16]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tuple-immutable-ordered-allow-duplicates-can-contain-elements-of-multiple-data-types">
+<h4>Tuple - immutable, ordered, allow duplicates, &amp; can contain elements of multiple data types<a class="headerlink" href="#tuple-immutable-ordered-allow-duplicates-can-contain-elements-of-multiple-data-types" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>an ordered sequence of elements that cannot be changed after creation (fixed data)</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">(&quot;Apple&quot;,</span> <span class="pre">&quot;Mango&quot;,</span> <span class="pre">&quot;Mango&quot;,</span> <span class="pre">1,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">9,</span> <span class="pre">True,</span> <span class="pre">False)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thistuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thistuple</span><span class="p">))</span>
+
+<span class="c1"># create a tuple with one iterm</span>
+<span class="n">animal</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;tiger&quot;</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">animal</span><span class="p">))</span>
+
+<span class="c1"># It is also possible to use the tuple() constructor to make a tuple.</span>
+
+<span class="c1"># Access Tuple Items - same as lists</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thistuple</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># UPDATE TUPLES</span>
+<span class="c1"># Tuples are unchangeable, meaning that we CANNOT CHANGE, add or remove items after the tuple has been created.</span>
+<span class="c1"># Must convert tuple into a list to add/remove items and then convert back to tuple if needed</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;kiwi&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># You can add one tuple to another</span>
+<span class="n">thistuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">,)</span>
+<span class="n">thistuple</span> <span class="o">+=</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">thistuple</span><span class="p">)</span>
+
+<span class="c1"># Join Tuples</span>
+<span class="n">tuple1</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">tuple2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">tuple3</span> <span class="o">=</span> <span class="n">tuple1</span> <span class="o">+</span> <span class="n">tuple2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tuple3</span><span class="p">)</span>
+
+<span class="c1"># del tuple deletes the tuple completely</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+&lt;class &#39;tuple&#39;&gt;
+banana
+(&#39;apple&#39;, &#39;kiwi&#39;, &#39;cherry&#39;)
+(&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;, &#39;orange&#39;)
+(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, 1, 2, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># UNPACKING a tuple - extract values back into variables </span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">yellow</span><span class="p">,</span> <span class="n">red</span><span class="p">)</span> <span class="o">=</span> <span class="n">fruits</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">green</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yellow</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">red</span><span class="p">)</span>
+
+<span class="c1"># Using Asterisk* - If the number of variables is less than the number of values, you can add an * to the variable name and the values will be assigned to the variable as a list</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">,</span> <span class="s2">&quot;strawberry&quot;</span><span class="p">,</span> <span class="s2">&quot;raspberry&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">yellow</span><span class="p">,</span> <span class="o">*</span><span class="n">red</span><span class="p">)</span> <span class="o">=</span> <span class="n">fruits</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">green</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yellow</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">red</span><span class="p">)</span>
+
+
+<span class="c1"># Looping through a tuple</span>
+<span class="n">thistuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">thistuple</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Multiply tuples</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">)</span>
+<span class="n">mytuple</span> <span class="o">=</span> <span class="n">fruits</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mytuple</span><span class="p">)</span>
+
+<span class="c1"># Tuple Methods</span>
+<span class="c1"># count() - returns the number of times a specified value occurs in a tuple</span>
+<span class="n">thistuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thistuple</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># index() - searches the tuple for a specified value and returns the position of where it was found</span>
+<span class="n">thistuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thistuple</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apple
+banana
+cherry
+apple
+banana
+[&#39;cherry&#39;, &#39;strawberry&#39;, &#39;raspberry&#39;]
+apple
+banana
+cherry
+(&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;)
+2
+3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sets-unordered-unchangeable-and-do-not-allow-duplicate-values">
+<h4>Sets - unordered, unchangeable, and do not allow duplicate values<a class="headerlink" href="#sets-unordered-unchangeable-and-do-not-allow-duplicate-values" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Python sets can contain elements of different data types, however, all elements within a set must be hashable (immutable)</p></li>
+<li><p>Used for uniqueness &amp; membership</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;apple&quot;,</span> <span class="pre">&quot;banana&quot;,</span> <span class="pre">&quot;cherry&quot;}</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Once a set is created, you cannot change its items, but you can remove items and add new items.</span>
+<span class="c1"># Set example - can it have different types of data? Yes, but not recommended for readability and performance reasons. Sets are unordered, unchangeable, and do not allow duplicate values.</span>
+<span class="n">thisset</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisset</span><span class="p">)</span>
+
+<span class="c1"># Use for fast membership checks and removing duplicates from a list</span>
+<span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">]</span>
+<span class="n">myset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myset</span><span class="p">)</span>
+
+<span class="c1"># Access Set Items</span>
+<span class="c1"># You cannot access items in a set by referring to an index or a key, since sets are unordered and do not have keys. </span>
+<span class="c1"># But you can loop through the set items using a for loop, or ask if a specified value is present in a set, by using the in keyword.</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">thisset</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;banana&quot;</span> <span class="ow">in</span> <span class="n">thisset</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;banana&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">thisset</span><span class="p">)</span>
+
+<span class="c1"># Change Set Items</span>
+<span class="c1"># Once a set is created, you cannot change its items, but you can remove items and add new items.</span>
+
+<span class="c1"># Add Items</span>
+<span class="n">thisset</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisset</span><span class="p">)</span>
+
+<span class="c1"># To add items (any iterable) from another set into the current set (or to add elements of list/tuple), use the update() method.</span>
+<span class="n">tropical</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pineapple&quot;</span><span class="p">,</span> <span class="s2">&quot;mango&quot;</span><span class="p">,</span> <span class="s2">&quot;papaya&quot;</span><span class="p">}</span>
+<span class="n">thisset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">tropical</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisset</span><span class="p">)</span>
+
+<span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;kiwi&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">]</span>
+<span class="n">thisset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisset</span><span class="p">)</span>
+
+<span class="c1"># Remove Items - .remove() or .discard() or .pop() or del or clear()</span>
+<span class="n">thisset</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;banana&quot;</span><span class="p">)</span> <span class="c1"># raises an error if item to remove does not exist</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisset</span><span class="p">)</span>
+
+<span class="n">thisset</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="s2">&quot;banana&quot;</span><span class="p">)</span> <span class="c1"># does not raise an error if item to remove does not exist</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisset</span><span class="p">)</span>
+
+<span class="n">thisset</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1"># removes a random item since sets are unordered</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisset</span><span class="p">)</span>
+
+<span class="n">thisset</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span> <span class="c1"># empties the set</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisset</span><span class="p">)</span>
+
+<span class="k">del</span> <span class="n">thisset</span> <span class="c1"># deletes the set completely</span>
+<span class="c1"># print(thisset) # raises an error since the set no longer exists</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;}
+{&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;}
+apple
+banana
+cherry
+True
+False
+{&#39;orange&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;}
+{&#39;pineapple&#39;, &#39;cherry&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;papaya&#39;}
+{&#39;pineapple&#39;, &#39;cherry&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;papaya&#39;}
+{&#39;pineapple&#39;, &#39;cherry&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;apple&#39;, &#39;papaya&#39;}
+{&#39;pineapple&#39;, &#39;cherry&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;apple&#39;, &#39;papaya&#39;}
+{&#39;cherry&#39;, &#39;kiwi&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;apple&#39;, &#39;papaya&#39;}
+set()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># FROZENSET - immutable version of a set; once created, you cannot change its items, but you can perform set operations like union, intersection, etc. on it.</span>
+<span class="c1"># Like sets, it contains unique, unordered, unchangeable elements.</span>
+<span class="c1"># Unlike sets, elements cannot be added or removed from a frozenset.</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Frozensets can be used as keys in dictionaries or as elements of other sets, while regular sets cannot.</span>
+
+<span class="c1"># FROZENSET METHODS</span>
+
+<span class="c1"># copy() - returns a shallow copy of the frozenset</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">})</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">set1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is copy:&quot;</span><span class="p">,</span> <span class="n">set2</span><span class="p">)</span>
+
+<span class="c1"># difference() (-) - returns a new set containing only the items that are present in the first set but not in the second set</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">})</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">})</span>
+<span class="n">set3</span> <span class="o">=</span> <span class="n">set1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is difference:&quot;</span><span class="p">,</span> <span class="n">set3</span><span class="p">)</span>
+
+<span class="c1"># union() (|) - returns a new set containing all items from both sets</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">})</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">})</span>
+<span class="n">set3</span> <span class="o">=</span> <span class="n">set1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is union:&quot;</span><span class="p">,</span> <span class="n">set3</span><span class="p">)</span>
+
+<span class="c1"># intersection() (&amp;) - returns a new set containing only the items that are present in both sets</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">})</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">})</span>
+<span class="n">set3</span> <span class="o">=</span> <span class="n">set1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is intersection:&quot;</span><span class="p">,</span> <span class="n">set3</span><span class="p">)</span>
+
+<span class="c1"># symmetric_difference() (^) - returns a new set containing only the items that are present in either set, but not in both sets</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">})</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">})</span>
+<span class="n">set3</span> <span class="o">=</span> <span class="n">set1</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is symmetric difference:&quot;</span><span class="p">,</span> <span class="n">set3</span><span class="p">)</span>
+
+<span class="c1"># isdisjoint() - returns True if two sets have no items in common, otherwise returns False</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">})</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is disjoint:&quot;</span><span class="p">,</span> <span class="n">set1</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">set2</span><span class="p">))</span>
+
+<span class="c1"># issubset() (&lt;= / &lt;) - returns True if all items in the set are present in the specified set, otherwise returns False</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">})</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is subset:&quot;</span><span class="p">,</span> <span class="n">set1</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">set2</span><span class="p">))</span>
+
+<span class="c1"># issuperset() (&gt;= / &gt;) - returns True if all items in the specified set are present in the set, otherwise returns False</span>
+<span class="n">set1</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">})</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is superset:&quot;</span><span class="p">,</span> <span class="n">set1</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">set2</span><span class="p">))</span>
+
+<span class="c1"># subset vs superset - A set can be both a subset and a superset of another set if they are equal. </span>
+<span class="c1"># For example, if set A is {1, 2, 3} and set B is also {1, 2, 3}, then A is a subset of B and B is a superset of A.</span>
+
+<span class="c1"># subset means &quot;is this set contained within the other set?&quot;</span>
+    <span class="c1"># example: {1, 2} is a subset of {1, 2, 3} because all elements of the first set are also in the second set.</span>
+
+<span class="c1"># superset means &quot;does this set contain the other set?&quot;</span>
+    <span class="c1"># example: {1, 2, 3} is a superset of {1, 2} because it contains all elements of the second set.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>frozenset({&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;})
+&lt;class &#39;frozenset&#39;&gt;
+This is copy: frozenset({&#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;})
+This is difference: frozenset({&#39;a&#39;})
+This is union: frozenset({1, 2, 3, &#39;b&#39;, &#39;a&#39;, &#39;c&#39;})
+This is intersection: frozenset({&#39;c&#39;, &#39;b&#39;})
+This is symmetric difference: frozenset({&#39;d&#39;, &#39;a&#39;})
+This is disjoint: True
+This is subset: True
+This is superset: True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionaries-ordered-changeable-and-do-not-allow-duplicates">
+<h4>Dictionaries - ordered*, changeable and do NOT allow duplicates<a class="headerlink" href="#dictionaries-ordered-changeable-and-do-not-allow-duplicates" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Dictionaries are used to store data values in key:value pairs.</p></li>
+<li><p>As of Python 3.7, dictionaries maintain the insertion order of items.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">thisdict</span> <span class="pre">=</span> <span class="pre">{</span>&#160;&#160; <span class="pre">&quot;brand&quot;:</span> <span class="pre">&quot;Ford&quot;,</span>&#160;&#160; <span class="pre">&quot;model&quot;:</span> <span class="pre">&quot;Mustang&quot;,</span>&#160;&#160; <span class="pre">&quot;year&quot;:</span> <span class="pre">1964</span> <span class="pre">}</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create &amp; Print a Dictionary</span>
+<span class="n">thisdict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span>  
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Mustang&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1964</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">thisdict</span><span class="p">))</span>
+
+<span class="c1"># dict() Constructor</span>
+<span class="n">dictConstruct</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">brand</span><span class="o">=</span><span class="s2">&quot;Ford&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;Mustang&quot;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">1964</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dictConstruct</span><span class="p">)</span>
+
+<span class="c1"># Dictionary Items</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">[</span><span class="s2">&quot;brand&quot;</span><span class="p">])</span>
+
+<span class="c1"># Changeable - you can change, add or remove items after the dictionary has been created</span>
+<span class="n">thisdict</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2020</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+
+<span class="c1"># Duplicate keys not allowed - if you duplicate a key, the last value will overwrite the previous value</span>
+<span class="n">thisdict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Mustang&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1964</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2020</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+
+<span class="c1"># Dictionary Length</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thisdict</span><span class="p">))</span>
+
+<span class="c1"># Dictionary Items - Data Types</span>
+<span class="c1"># Dictionary can have any data type as value, but keys must be of an immutable data type (string, number, tuple, etc.) and must be unique.</span>
+<span class="n">thisdict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;electric&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1964</span><span class="p">,</span>
+    <span class="s2">&quot;colors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 1964}
+&lt;class &#39;dict&#39;&gt;
+{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 1964}
+Ford
+{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 2020}
+{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 2020}
+3
+{&#39;brand&#39;: &#39;Ford&#39;, &#39;electric&#39;: False, &#39;year&#39;: 1964, &#39;colors&#39;: [&#39;red&#39;, &#39;white&#39;, &#39;blue&#39;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thisdict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Mustang&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1964</span>
+<span class="p">}</span>
+
+<span class="c1"># Access Dictionary Items</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">thisdict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c1"># returns a view object that displays a list of all the keys in the dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">thisdict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="c1"># The values() method will return a list of all the values in the dictionary.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Add new items to the dictionary</span>
+<span class="n">thisdict</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+
+<span class="c1"># Get Items - The items() method will return each item in a dictionary, as a list of tuples.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">thisdict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Check if key exists</span>
+<span class="k">if</span> <span class="s2">&quot;model&quot;</span> <span class="ow">in</span> <span class="n">thisdict</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yes, &#39;model&#39; is one of the keys in the thisdict dictionary&quot;</span><span class="p">)</span>
+
+<span class="c1"># Change Dictionary Items</span>
+<span class="n">thisdict</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2020</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+
+<span class="n">thisdict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2020</span><span class="p">})</span> <span class="c1"># The update() method will update the dictionary with the items from the given argument.</span>
+<span class="c1"># The argument must be a dictionary, or an iterable object with key:value pairs.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+
+<span class="c1"># Can also be used to add</span>
+<span class="n">thisdict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">})</span>
+
+<span class="c1"># Remove dictionary items</span>
+<span class="n">thisdict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">)</span> <span class="c1"># removes item with specified key and returns the value</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is pop:&quot;</span><span class="p">,</span> <span class="n">thisdict</span><span class="p">)</span>
+
+<span class="n">thisdict</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span> <span class="c1"># removes the last inserted item (in versions before 3.7, it removes a random item) and returns the key-value pair as a tuple</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is popitem:&quot;</span><span class="p">,</span> <span class="n">thisdict</span><span class="p">)</span>
+
+<span class="k">del</span> <span class="n">thisdict</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="c1"># removes the item with the specified key</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is del:&quot;</span><span class="p">,</span> <span class="n">thisdict</span><span class="p">)</span>
+
+<span class="n">clear_dict</span> <span class="o">=</span> <span class="n">thisdict</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span> <span class="c1"># empties the dictionary but does not delete it</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is clear:&quot;</span><span class="p">,</span> <span class="n">thisdict</span><span class="p">)</span>
+
+<span class="k">del</span> <span class="n">thisdict</span> <span class="c1"># deletes the dictionary completely</span>
+
+
+<span class="c1"># LOOP THROUGH DICTIONARY</span>
+<span class="n">thisdict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Mustang&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1964</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">thisdict</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the key:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># prints keys</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">thisdict</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the value:&quot;</span><span class="p">,</span> <span class="n">thisdict</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="c1"># prints values</span>
+
+<span class="c1"># Loop through both keys and values, by using the items() method</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">thisdict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the key:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mustang
+Mustang
+dict_keys([&#39;brand&#39;, &#39;model&#39;, &#39;year&#39;])
+dict_values([&#39;Ford&#39;, &#39;Mustang&#39;, 1964])
+{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 1964, &#39;color&#39;: &#39;red&#39;}
+dict_items([(&#39;brand&#39;, &#39;Ford&#39;), (&#39;model&#39;, &#39;Mustang&#39;), (&#39;year&#39;, 1964), (&#39;color&#39;, &#39;red&#39;)])
+Yes, &#39;model&#39; is one of the keys in the thisdict dictionary
+{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 2020, &#39;color&#39;: &#39;red&#39;}
+{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 2020, &#39;color&#39;: &#39;red&#39;}
+This is pop: {&#39;brand&#39;: &#39;Ford&#39;, &#39;year&#39;: 2020, &#39;color&#39;: &#39;red&#39;}
+This is popitem: {&#39;brand&#39;: &#39;Ford&#39;, &#39;year&#39;: 2020}
+This is del: {&#39;brand&#39;: &#39;Ford&#39;}
+This is clear: {}
+This is the key: brand
+This is the key: model
+This is the key: year
+This is the value: Ford
+This is the value: Mustang
+This is the value: 1964
+This is the key: brand
+This is the value: Ford
+This is the key: model
+This is the value: Mustang
+This is the key: year
+This is the value: 1964
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy a Dictionary</span>
+<span class="c1"># Cannot copy a dictionary simply by typing dict2 = dict1, </span>
+    <span class="c1"># because: dict2 will only be a reference to dict1, and </span>
+    <span class="c1"># changes made in dict1 will automatically be made in dict2.</span>
+
+<span class="n">thisdict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;Mustang&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1964</span>
+<span class="p">}</span>
+
+<span class="n">copy_of_dict</span> <span class="o">=</span> <span class="n">thisdict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">copy_of_dict</span><span class="p">)</span>
+
+<span class="c1"># The dict() constructor can also be used to make a copy of a dictionary.</span>
+<span class="n">copy_of_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">thisdict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">copy_of_dict</span><span class="p">)</span>
+
+<span class="c1"># Nested Dictionaries - a dictionary can contain dictionaries, which can contain dictionaries, etc.</span>
+<span class="n">myfamily</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;child1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Emil&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2004</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;child2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tobias&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2007</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;child3&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Linus&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2011</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Create three dictionaries, then create one dictionary that will contain the other three dictionaries:</span>
+<span class="n">child1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Emil&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2004</span>
+<span class="p">}</span>
+<span class="n">child2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tobias&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2007</span>
+<span class="p">}</span>
+<span class="n">child3</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Linus&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="mi">2011</span>
+<span class="p">}</span>
+
+<span class="n">myfamily</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;child1&quot;</span><span class="p">:</span> <span class="n">child1</span><span class="p">,</span>
+    <span class="s2">&quot;child2&quot;</span><span class="p">:</span> <span class="n">child2</span><span class="p">,</span>
+    <span class="s2">&quot;child3&quot;</span><span class="p">:</span> <span class="n">child3</span>
+<span class="p">}</span>
+
+<span class="c1"># Accessing Items in Nested Dictionaries</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myfamily</span><span class="p">[</span><span class="s2">&quot;child2&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+<span class="c1"># This is the same as:</span>
+<span class="n">child2</span> <span class="o">=</span> <span class="n">myfamily</span><span class="p">[</span><span class="s2">&quot;child2&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">child2</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+<span class="c1"># You can also use the get() method to access items in a nested dictionary.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myfamily</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;child2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+
+<span class="c1"># You can also loop through the nested dictionary to access items.</span>
+<span class="k">for</span> <span class="n">child</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">myfamily</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the child:&quot;</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the info:&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+
+<span class="c1"># You can also loop through the nested dictionary to access specific items.</span>
+<span class="k">for</span> <span class="n">child</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">myfamily</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the child:&quot;</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the name:&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+<span class="c1"># You can also loop through the nested dictionary to access specific items using the get() method.</span>
+<span class="k">for</span> <span class="n">child</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">myfamily</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the child:&quot;</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the name:&quot;</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 1964}
+{&#39;brand&#39;: &#39;Ford&#39;, &#39;model&#39;: &#39;Mustang&#39;, &#39;year&#39;: 1964}
+Tobias
+Tobias
+Tobias
+This is the child: child1
+This is the info: {&#39;name&#39;: &#39;Emil&#39;, &#39;year&#39;: 2004}
+This is the child: child2
+This is the info: {&#39;name&#39;: &#39;Tobias&#39;, &#39;year&#39;: 2007}
+This is the child: child3
+This is the info: {&#39;name&#39;: &#39;Linus&#39;, &#39;year&#39;: 2011}
+This is the child: child1
+This is the name: Emil
+This is the child: child2
+This is the name: Tobias
+This is the child: child3
+This is the name: Linus
+This is the child: child1
+This is the name: Emil
+This is the child: child2
+This is the name: Tobias
+This is the child: child3
+This is the name: Linus
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="control-flow">
+<h4>Control Flow<a class="headerlink" href="#control-flow" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>if/elif/else &amp; match</p></li>
+<li><p>for loop - for x in iterable; for i in range(0, 10, 2)</p></li>
+<li><p>while condition: …</p></li>
+<li><p>break (stops the loop completely), continue (skips the rest of the current loop iteration and goes to the next one)</p></li>
+<li><p>def function_name(parameter):</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Match - used to perform different actions based on different conditions (selects one of many blocks of code to be executed)</span>
+
+<span class="c1"># Match Expression Structure:</span>
+<span class="c1"># match expression:</span>
+<span class="c1">#     case x:</span>
+<span class="c1">#         code block</span>
+<span class="c1">#     case y:</span>
+<span class="c1">#         code block</span>
+<span class="c1">#     case z:</span>
+<span class="c1">#         code block</span>
+
+<span class="n">day</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">match</span> <span class="n">day</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Monday&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wednesday&quot;</span><span class="p">)</span>
+    <span class="c1"># DEFAULT CASE (_) - use as last case value if you want a code block to execute when there are no other matches</span>
+    <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>     
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Another day&quot;</span><span class="p">)</span>
+
+<span class="c1"># Example of Combining Values - checks for more than one value match in one case</span>
+<span class="n">day</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">match</span> <span class="n">day</span><span class="p">:</span>
+    <span class="k">case</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="mi">3</span> <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is a weekday&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the weekend&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tuesday
+This is the weekend
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Loop with Step</span>
+
+<span class="c1"># For Loop and Enumerate</span>
+<span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tiger&quot;</span><span class="p">,</span> <span class="s2">&quot;wolf&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">animals</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 tiger
+1 wolf
+2 dog
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># FUNCTIONS</span>
+<span class="c1"># Function name must start with a letter or underscore</span>
+<span class="c1"># Function name can only contain letters, numbers, and underscores and function names are case sensitive</span>
+<span class="c1"># Use the pass statement for a placeholder without implementation</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="n">my_func</span><span class="p">()</span>
+
+<span class="c1"># Return Values</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_fruit</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Mango&quot;</span>
+
+<span class="n">fruit</span> <span class="o">=</span> <span class="n">get_fruit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
+Mango
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PARAMETERS (function placeholders) VS. ARGUMENTS (actual values)</span>
+<span class="c1"># Parameters: variables listed in the function definition</span>
+<span class="c1"># Arguments: actual values passed when calling the function</span>
+<span class="c1"># Parameters recieve arguments</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>   <span class="c1"># a, b → parameters</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>        <span class="c1"># 2, 3 → arguments</span>
+
+
+<span class="c1"># Two Ways to Pass Arguments</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+
+<span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>          <span class="c1"># positional</span>
+<span class="n">greet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># keyword</span>
+
+
+<span class="c1"># Specify positional or keyword arguments only (can combine them as well in the same function):</span>
+
+<span class="c1"># Positional Only:</span>
+<span class="c1"># def func(a, b, /):</span>
+<span class="c1">#     ...</span>
+
+<span class="c1"># Keyword Only:</span>
+<span class="c1"># def func(*, a, b):</span>
+<span class="c1">#     ...</span>
+
+
+<span class="c1"># Default Parameter Values</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">introduce</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hey, this is&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;Alexander&quot;</span><span class="p">)</span>
+<span class="n">introduce</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice 30
+Alice 30
+Hey, this is Alexander
+Hey, this is John
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scope-legb-rule">
+<h4>Scope &amp; LEGB Rule<a class="headerlink" href="#scope-legb-rule" title="Link to this heading">#</a></h4>
+<p>When Python looks for a variable, it searches in this order:</p>
+<p>L → E → G → B</p>
+<ol class="arabic simple">
+<li><p>Local – inside the current function</p></li>
+<li><p>Enclosing – inside any outer function (nested functions)</p></li>
+<li><p>Global – at the top level of the file</p></li>
+<li><p>Built-in – Python’s built-in names (e.g., len, print)</p></li>
+</ol>
+<p>Local variables don’t change global ones unless <code class="docutils literal notranslate"><span class="pre">global</span></code> is used</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The local x does NOT affect the global x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>        <span class="c1"># Global scope</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c1"># Local scope</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">()</span>           <span class="c1"># prints 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>      <span class="c1"># prints 10</span>
+
+
+<span class="c1"># Assignment creates a local variable unless stated otherwise; To change the global y inside the function</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">y</span> <span class="c1"># use global keyword</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">g</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># 5</span>
+
+
+<span class="c1"># MODIFYING ENCLOSING VARIABLE</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">x</span> <span class="c1"># use nonlocal keyword</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>
+
+    <span class="n">inner</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">outer</span><span class="p">()</span>
+
+
+<span class="c1"># nonlocal allows modifying a variable from the enclosing scope</span>
+<span class="c1"># Without nonlocal, x = 20 would create a new local variable inside inner</span>
+
+
+<span class="c1"># SUMMARY - LEGB/Scope </span>
+<span class="n">z</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">outside</span><span class="p">():</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="s2">&quot;enclosing&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inside</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>  <span class="c1"># local → &quot;local&quot;</span>
+
+    <span class="n">inside</span><span class="p">()</span>
+
+<span class="n">outside</span><span class="p">()</span>
+
+<span class="c1"># Local → current function</span>
+<span class="c1"># Enclosing → outside function</span>
+<span class="c1"># Global → module-level</span>
+<span class="c1"># Built-in → Python built-ins</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+10
+5
+20
+local
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-types">
+<h4>Error Types<a class="headerlink" href="#error-types" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>TypeError - wrong type</p></li>
+<li><p>ValueError - correct type, wrong value</p></li>
+<li><p>KeyError - dict key missing</p></li>
+<li><p>IndexError - index out of range</p></li>
+<li><p>NameError - variable not defined</p></li>
+<li><p>AttributeError - method doesn’t exist</p></li>
+</ul>
+</section>
+<section id="exception-handling-raiserror">
+<h4>Exception Handling - raiserror<a class="headerlink" href="#exception-handling-raiserror" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exception Handling Example</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conversion failed&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Conversion failed
+Done
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="map">
+<h3>map<a class="headerlink" href="#map" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Applies a function to every element</p></li>
+<li><p>Keeps same length</p></li>
+<li><p>Returns a lazy map object</p></li>
+</ul>
+</section>
+<section id="filter">
+<h3>filter<a class="headerlink" href="#filter" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Keeps elements that return True</p></li>
+<li><p>Output may be smaller</p></li>
+<li><p>Returns a lazy filter object</p></li>
+</ul>
+</section>
+<section id="zip">
+<h3>zip<a class="headerlink" href="#zip" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Combines iterables by position</p></li>
+<li><p>Stops at shortest iterable</p></li>
+<li><p>Returns tuples</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MAP, FILTER, &amp; ZIP</span>
+<span class="c1"># map() — transform every element (apply this function to every element); map(function, iterable)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">square_numbers</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">squares</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">square_numbers</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">squares</span><span class="p">))</span>
+<span class="c1"># `map` took each element from nums and applied square_numbers and stored results lazily, list() forced eval</span>
+
+<span class="c1"># Using lambda</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">squares</span><span class="p">))</span>
+
+<span class="c1"># List comprehension with map</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">nums</span><span class="p">)))</span>
+
+
+<span class="c1"># filter() — select elements that satisfy a condition (keep only what passes the test); filter(function, iterable); </span>
+<span class="c1"># funtion must return true or false &amp; only elements returning True survive</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="n">evens</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">evens</span><span class="p">))</span>
+
+<span class="c1"># Example 2 - filter strings by length </span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;science&quot;</span><span class="p">,</span> <span class="s2">&quot;ai&quot;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">]</span>
+
+<span class="n">long_words</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="n">words</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">long_words</span><span class="p">))</span>
+
+
+<span class="c1"># zip() — pair data together - pairs elements by position; stitch sequences together; zip(iterable1, iterable2, ...)</span>
+<span class="c1"># if unequal lengths - zip stops at the shortest iterable</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">]</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">92</span><span class="p">]</span>
+
+<span class="n">pairs</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">pairs</span><span class="p">))</span>
+
+<span class="c1"># looping over two lists at once</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;scored&quot;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+
+
+
+<span class="c1"># EXAMPLE COMBINING MAP, FILTER, &amp; ZIP </span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">]</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">82</span><span class="p">]</span>
+
+<span class="c1"># Pair names and scores</span>
+<span class="n">paired</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+
+<span class="c1"># Keep only passing students</span>
+<span class="n">passed</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">,</span> <span class="n">paired</span><span class="p">)</span>
+
+<span class="c1"># Extract names only</span>
+<span class="n">passed_names</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">passed</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">passed_names</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 4, 9, 16]
+[1, 4, 9, 16]
+[1, 4, 9, 16]
+[2, 4, 6]
+[&#39;data&#39;, &#39;science&#39;, &#39;python&#39;]
+[(&#39;Alice&#39;, 90), (&#39;Bob&#39;, 85), (&#39;Charlie&#39;, 92)]
+Alice scored 90
+Bob scored 85
+Charlie scored 92
+[&#39;Alice&#39;, &#39;Charlie&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python Data Science &amp; ML</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01_advanced_python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advanced Python Concepts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-examples">Markdown Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-python-review-for-some-topics">Quick Python Review for some topics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#false-values">False values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-collections-arrays">Python Collections (Arrays)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-mutable-ordered-allow-duplicates-allow-multiple-types">List - mutable, ordered, allow duplicates, &amp; allow multiple types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple-immutable-ordered-allow-duplicates-can-contain-elements-of-multiple-data-types">Tuple - immutable, ordered, allow duplicates, &amp; can contain elements of multiple data types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-unordered-unchangeable-and-do-not-allow-duplicate-values">Sets - unordered, unchangeable, and do not allow duplicate values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-ordered-changeable-and-do-not-allow-duplicates">Dictionaries - ordered*, changeable and do NOT allow duplicates</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#control-flow">Control Flow</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-legb-rule">Scope &amp; LEGB Rule</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-types">Error Types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling-raiserror">Exception Handling - raiserror</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map">map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter">filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zip">zip</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
